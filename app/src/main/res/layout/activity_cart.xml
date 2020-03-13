@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activity.CartActivity">
+
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appbarlayout"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize">
+
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbarlayout"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ScanBor App"
+                android:textColor="@color/colorWhite"
+                android:layout_gravity="center"
+                android:id="@+id/toolbar_title" />
+
+
+        </androidx.appcompat.widget.Toolbar>
+
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_margin="15dp"
+        android:layout_below="@+id/appbarlayout"
+        android:layout_above="@+id/totalTv"
+        android:id="@+id/cartRv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <com.example.scanbot.CustomFonts.MavenProTextView
+        android:layout_above="@+id/submitbtn"
+        android:id="@+id/totalTv"
+        android:textSize="23sp"
+        android:gravity="center"
+        android:textColor="@color/colorBlack"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <com.example.scanbot.CustomFonts.MavenProButton
+        android:text="Buy"
+        android:textColor="@color/colorWhite"
+        android:layout_margin="15dp"
+        android:textSize="20sp"
+        android:textAllCaps="false"
+        android:id="@+id/submitbtn"
+        android:background="@drawable/loginpagebg"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+</RelativeLayout>

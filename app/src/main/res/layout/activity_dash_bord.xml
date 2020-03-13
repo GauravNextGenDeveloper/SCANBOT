@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Activity.DashBordActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appbarlayout"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize">
+
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbarlayout"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ScanBor App"
+                android:textColor="@color/colorWhite"
+                android:layout_gravity="center"
+                android:id="@+id/toolbar_title" />
+
+            <ImageView
+                android:id="@+id/logoutIv"
+                android:layout_gravity="right"
+                android:src="@drawable/logout"
+                android:layout_width="50dp"
+                android:layout_height="match_parent"/>
+
+
+        </androidx.appcompat.widget.Toolbar>
+
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <LinearLayout
+            android:layout_margin="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/profile"
+                android:layout_margin="5dp"
+                android:gravity="center"
+                android:elevation="5dp"
+                android:background="@drawable/loginpagebg"
+                android:layout_width="200dp"
+                android:layout_height="200dp">
+
+                <TextView
+                    android:text="My Profile"
+                    android:textColor="@color/colorWhite"
+                    android:layout_gravity="center"
+                    android:textSize="28sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/scanner"
+                android:layout_margin="5dp"
+                android:elevation="5dp"
+                android:background="@drawable/loginpagebg"
+                android:gravity="center"
+                android:layout_width="200dp"
+                android:layout_height="200dp">
+
+                <TextView
+                    android:gravity="center"
+                    android:text="Scan QR"
+                    android:textColor="@color/colorWhite"
+                    android:layout_gravity="center"
+                    android:textSize="28sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_margin="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/cart"
+                android:layout_margin="5dp"
+                android:elevation="5dp"
+                android:background="@drawable/loginpagebg"
+                android:gravity="center"
+                android:layout_width="200dp"
+                android:layout_height="200dp">
+
+                <TextView
+                    android:text="My Cart"
+                    android:layout_gravity="center"
+                    android:textSize="28sp"
+                    android:textColor="@color/colorWhite"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/history"
+                android:layout_margin="5dp"
+                android:elevation="5dp"
+                android:background="@drawable/loginpagebg"
+                android:gravity="center"
+                android:layout_width="200dp"
+                android:layout_height="200dp">
+
+                <TextView
+                    android:gravity="center"
+                    android:text="Purchase History"
+                    android:layout_gravity="center"
+                    android:textSize="28sp"
+                    android:textColor="@color/colorWhite"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+</androidx.appcompat.widget.LinearLayoutCompat>
