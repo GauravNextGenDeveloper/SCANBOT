@@ -26,13 +26,11 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.BeanHold
     private List<BuyOne> list;
     private Context context;
     private LayoutInflater layoutInflater;
-    private OnNoteItemClick onNoteItemClick;
 
     public ProductAdapter(List<BuyOne> list, Context context) {
         layoutInflater = LayoutInflater.from(context);
         this.list = list;
         this.context = context;
-        this.onNoteItemClick = (OnNoteItemClick) context;
     }
 
 
@@ -77,7 +75,6 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.BeanHold
 
         @Override
         public void onClick(View view) {
-            onNoteItemClick.onNoteClick(getAdapterPosition());
         }
     }
 

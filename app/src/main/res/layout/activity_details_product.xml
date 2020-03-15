@@ -36,7 +36,7 @@
             android:layout_height="match_parent">
 
             <com.example.scanbot.CustomFonts.MavenProTextView
-                android:text="Profile Details"
+                android:text="Product Details"
                 android:textStyle="bold"
                 android:textColor="@color/colorPrimaryDark"
                 android:textSize="25sp"

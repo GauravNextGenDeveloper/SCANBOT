@@ -139,7 +139,8 @@ public class PurchaseActivity extends AppCompatActivity {
                 buyOne.setTotalprice(cartListarray.get(i).getTotalprice());
                 buyOne.setProductquantity(cartListarray.get(i).getProductquantity());
                 buyOne.setImage(cartListarray.get(i).getImage());
-
+                buyOne.setProduct_id(cartListarray.get(i).getProduct_id());
+                buyOne.setUser_id(userid);
                 new InsertTask(PurchaseActivity.this, buyOne).execute();
 
             }

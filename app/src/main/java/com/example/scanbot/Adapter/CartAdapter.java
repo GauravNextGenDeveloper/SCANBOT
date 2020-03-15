@@ -25,13 +25,11 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.BeanHolder> {
     private List<Cart> list;
     private Context context;
     private LayoutInflater layoutInflater;
-    private OnNoteItemClick onNoteItemClick;
 
     public CartAdapter(List<Cart> list, Context context) {
         layoutInflater = LayoutInflater.from(context);
         this.list = list;
         this.context = context;
-        this.onNoteItemClick = (OnNoteItemClick) context;
     }
 
 
@@ -76,7 +74,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.BeanHolder> {
 
         @Override
         public void onClick(View view) {
-            onNoteItemClick.onNoteClick(getAdapterPosition());
+
         }
     }
 

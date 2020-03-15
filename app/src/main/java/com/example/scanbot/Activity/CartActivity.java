@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.scanbot.Adapter.CartAdapter;
 import com.example.scanbot.Database.ScanBotDatabase;
@@ -105,6 +106,7 @@ public class CartActivity extends AppCompatActivity {
         if (total==0)
         {
             submitbtn.setVisibility(View.GONE);
+            Toast.makeText(this,"No Items In Cart",Toast.LENGTH_SHORT).show();
         }else {
             totalTv.setText(total + "");
             totalfar = total;

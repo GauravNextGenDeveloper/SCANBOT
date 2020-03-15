@@ -45,11 +45,13 @@ public class ScannerActivity extends AppCompatActivity {
                 mCodeScanner.startPreview();
             }
         });
+
     }
 
     private void call(String text) {
         Intent i = new Intent(this,DetailsProductActivity.class);
         i.putExtra("result",text);
+        i.putExtra("userid",userid);
         startActivity(i);
         finish();
     }

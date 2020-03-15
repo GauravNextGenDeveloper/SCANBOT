@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import com.example.scanbot.Adapter.ProductAdapter;
 import com.example.scanbot.Database.ScanBotDatabase;
@@ -65,6 +66,9 @@ public class ProductActivity extends AppCompatActivity {
             if (buyOneList != null && buyOneList.size() > 0) {
 
                 dothings(buyOneList);
+            }else
+            {
+                Toast.makeText(ProductActivity.this,"No Items Prchase Yet",Toast.LENGTH_SHORT).show();
             }
         }
     }
