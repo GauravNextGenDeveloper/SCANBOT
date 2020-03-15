@@ -13,7 +13,7 @@ import com.example.scanbot.Database.model.Cart;
 import com.example.scanbot.Database.model.Register;
 
 
-@Database(entities = { Register.class, Cart.class, BuyOne.class}, version = 1)
+@Database(entities = { Register.class, Cart.class, BuyOne.class}, version = 1, exportSchema = false)
 public abstract class ScanBotDatabase extends RoomDatabase {
 
     public abstract RegisterDao getUsers();

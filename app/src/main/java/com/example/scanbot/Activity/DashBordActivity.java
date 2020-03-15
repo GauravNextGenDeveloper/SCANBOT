@@ -1,6 +1,7 @@
 package com.example.scanbot.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.LinearLayoutCompat;
 import androidx.cardview.widget.CardView;
 
 import android.content.Context;
@@ -10,12 +11,13 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import com.example.scanbot.R;
 
 public class DashBordActivity extends AppCompatActivity {
 
-    CardView profile,cart,history,scanner;
+    LinearLayoutCompat profile,cart,history,scanner;
     ImageView logoutIv;
     long userid = 0;
     @Override

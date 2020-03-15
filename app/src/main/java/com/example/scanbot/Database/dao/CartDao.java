@@ -40,7 +40,8 @@ public interface CartDao {
      * delete the object from database
      * @param note, object to be deleted
      */
-    @Delete
+
+    @Query("DELETE FROM product_table")
     void deleteCart();
 
 

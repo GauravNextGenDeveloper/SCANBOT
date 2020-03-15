@@ -11,7 +11,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.scanbot.Database.ScanBotDatabase;
@@ -40,9 +39,6 @@ public class RegistrationActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
-
-        scanBotDatabase = ScanBotDatabase.getInstance(RegistrationActivity.this);
-
         initialize();
 
 
@@ -101,6 +97,8 @@ public class RegistrationActivity extends AppCompatActivity {
                     message("Confirm Password Not Matched with Password");
                 }else
                 {
+                    scanBotDatabase = ScanBotDatabase.getInstance(RegistrationActivity.this);
+                    register = new Register();
                     register.setName(name);
                     register.setMobile(mobile);
                     register.setEmail(email);
@@ -139,8 +137,10 @@ public class RegistrationActivity extends AppCompatActivity {
         private WeakReference<RegistrationActivity> activityReference;
         // only retain a weak reference to the activity
         InsertTask(RegistrationActivity context, Register register) {
+            activityReference = new WeakReference<>(context);
             this.register = register;
         }
+
 
         @Override
         protected void onPreExecute() {

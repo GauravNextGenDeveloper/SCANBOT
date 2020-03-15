@@ -40,8 +40,8 @@ public interface HistoryDao {
      * delete the object from database
      * @param note, object to be deleted
      */
-    @Delete
-    void deleteCart();
 
+    @Query("DELETE FROM buyhistory_table")
+    void deleteCart();
 
 }

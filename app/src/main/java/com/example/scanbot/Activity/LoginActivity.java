@@ -53,7 +53,7 @@ public class LoginActivity extends AppCompatActivity {
 
         mobilenoTv=findViewById(R.id.mobilenoEt);
         PwdTv=findViewById(R.id.passwordEt);
-        btnsub=findViewById(R.id.btnsub);
+        btnsub=findViewById(R.id.loginbtn);
 
         new RetrieveTask(this).execute();
 
@@ -78,6 +78,7 @@ public class LoginActivity extends AppCompatActivity {
                                 editor.putString("email", register.getEmail());
                                 editor.putString("mobile", register.getMobile());
                                 editor.putLong("id", register.getUser_id());
+                                editor.putBoolean("login", true);
                                 editor.apply();
                                 editor.commit();
 

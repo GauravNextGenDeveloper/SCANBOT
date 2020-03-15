@@ -33,8 +33,8 @@ public interface RegisterDao {
      * delete the object from database
      * @param note, object to be deleted
      */
-    @Delete
-    void deleteRegister();
 
+    @Query("DELETE FROM users_table")
+    void deleteRegister();
 
 }

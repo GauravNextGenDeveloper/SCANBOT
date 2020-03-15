@@ -153,6 +153,7 @@ public class PurchaseActivity extends AppCompatActivity {
         // only retain a weak reference to the activity
         InsertTask(PurchaseActivity context, BuyOne buyOne) {
             this.buyOne = buyOne;
+            activityReference = new WeakReference<>(context);
         }
 
         @Override

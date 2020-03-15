@@ -3,6 +3,7 @@ package com.example.scanbot.Activity;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
@@ -20,7 +21,7 @@ public class ScannerActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_scanner);
         CodeScannerView scannerView = findViewById(R.id.scanner_view);
         userid = getIntent().getLongExtra("userid",0);
 
@@ -32,6 +33,8 @@ public class ScannerActivity extends AppCompatActivity {
                     @Override
                     public void run() {
                         Toast.makeText(ScannerActivity.this, result.getText(), Toast.LENGTH_SHORT).show();
+
+                        call(result.getText());
                     }
                 });
             }
@@ -42,6 +45,13 @@ public class ScannerActivity extends AppCompatActivity {
                 mCodeScanner.startPreview();
             }
         });
+    }
+
+    private void call(String text) {
+        Intent i = new Intent(this,DetailsProductActivity.class);
+        i.putExtra("result",text);
+        startActivity(i);
+        finish();
     }
 
     @Override

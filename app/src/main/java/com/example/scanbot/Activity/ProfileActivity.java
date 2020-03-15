@@ -28,6 +28,7 @@ public class ProfileActivity extends AppCompatActivity {
          name = prefs.getString("name", "");
          email = prefs.getString("email", "");
          mobile = prefs.getString("mobile", "");
+         address = prefs.getString("address", "");
 
         initialize();
     }
@@ -38,11 +39,12 @@ public class ProfileActivity extends AppCompatActivity {
         mobiletv=findViewById(R.id.mobiletv);
         emailtv=findViewById(R.id.emailtv);
         addressTv=findViewById(R.id.addressTv);
+        btnsub=findViewById(R.id.btnsub);
 
         nametv.setText(name);
         mobiletv.setText(mobile);
         emailtv.setText(email);
-
+        addressTv.setText(address);
 
         btnsub.setOnClickListener(new View.OnClickListener() {
             @Override

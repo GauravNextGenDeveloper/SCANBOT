@@ -147,6 +147,8 @@ public class DetailsProductActivity extends AppCompatActivity {
         // only retain a weak reference to the activity
         InsertTask(DetailsProductActivity context, Cart cart) {
             this.cart = cart;
+            activityReference = new WeakReference<>(context);
+
         }
 
         @Override

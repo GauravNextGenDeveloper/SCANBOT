@@ -23,7 +23,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="ScanBor App"
+                android:text="ScanBot App"
                 android:textColor="@color/colorWhite"
                 android:layout_gravity="center"
                 android:id="@+id/toolbar_title" />
@@ -50,6 +50,7 @@
 
 
         <LinearLayout
+            android:weightSum="2"
             android:layout_margin="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -59,8 +60,9 @@
                 android:layout_margin="5dp"
                 android:gravity="center"
                 android:elevation="5dp"
+                android:layout_weight="1"
                 android:background="@drawable/loginpagebg"
-                android:layout_width="200dp"
+                android:layout_width="0dp"
                 android:layout_height="200dp">
 
                 <TextView
@@ -79,7 +81,8 @@
                 android:elevation="5dp"
                 android:background="@drawable/loginpagebg"
                 android:gravity="center"
-                android:layout_width="200dp"
+                android:layout_weight="1"
+                android:layout_width="0dp"
                 android:layout_height="200dp">
 
                 <TextView
@@ -95,6 +98,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:weightSum="2"
             android:layout_margin="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -105,7 +109,8 @@
                 android:elevation="5dp"
                 android:background="@drawable/loginpagebg"
                 android:gravity="center"
-                android:layout_width="200dp"
+                android:layout_weight="1"
+                android:layout_width="0dp"
                 android:layout_height="200dp">
 
                 <TextView
@@ -124,7 +129,8 @@
                 android:elevation="5dp"
                 android:background="@drawable/loginpagebg"
                 android:gravity="center"
-                android:layout_width="200dp"
+                android:layout_weight="1"
+                android:layout_width="0dp"
                 android:layout_height="200dp">
 
                 <TextView
