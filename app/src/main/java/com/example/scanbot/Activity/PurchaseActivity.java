@@ -3,6 +3,7 @@ package com.example.scanbot.Activity;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -10,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 
 import com.example.scanbot.Database.ScanBotDatabase;
 import com.example.scanbot.Database.model.BuyOne;
@@ -25,13 +27,15 @@ public class PurchaseActivity extends AppCompatActivity {
 
     TextInputEditText totalEt,addressTv;
     Button loginbtn;
-    CheckBox casCheck;
+    CheckBox casCheck,olCheck;
     private String MY_PREFS_NAME = "SCANBOOT";
     long userid=0;
     double total=0;
     private ScanBotDatabase scanBotDatabase;
     private List<Cart> cartListarray;
     private ProgressDialog progressDialog;
+    boolean cash=true,online=false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,6 +61,7 @@ public class PurchaseActivity extends AppCompatActivity {
         addressTv = findViewById(R.id.addressTv);
         loginbtn = findViewById(R.id.loginbtn);
         casCheck = findViewById(R.id.casCheck);
+        olCheck = findViewById(R.id.olCheck);
 
         userid=getIntent().getLongExtra("userid",0);
         total=getIntent().getDoubleExtra("totalfare",0);
@@ -69,7 +74,40 @@ public class PurchaseActivity extends AppCompatActivity {
         loginbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                addToCart();
+               addToCart();
+            }
+        });
+
+        casCheck.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked==true)
+                {
+                    cash =isChecked;
+                    olCheck.setChecked(false);
+
+                }else
+                {
+                    olCheck.setChecked(true);
+                    online=true;
+                }
+            }
+        });
+
+        olCheck.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked==true)
+                {
+                    online =isChecked;
+                    casCheck.setChecked(false);
+
+                }else
+                {
+                    casCheck.setChecked(true);
+                    cash=true;
+                }
+
             }
         });
     }
@@ -180,7 +218,15 @@ public class PurchaseActivity extends AppCompatActivity {
             activityReference.get().scanBotDatabase.getCart().deleteCart();
             HideProgress();
             if (bool) {
-                finish();
+                if (cash==true)
+                {
+                    finish();
+                }else if (online==true)
+                {
+                    Intent intent = new Intent(PurchaseActivity.this,WebviewActivity.class);
+                    startActivity(intent);
+                    finish();
+                }
             }
         }
     }

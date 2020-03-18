@@ -150,6 +150,17 @@
                 android:textAllCaps="false"
                 android:textColor="@color/colorWhite"/>
 
+            <com.example.scanbot.CustomFonts.MavenProTextView
+                android:id="@+id/login"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:textColor="@color/colorBlack"
+                android:textSize="20sp"
+                android:text="Login Now"
+                android:layout_margin="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>

@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.scanbot.Database.ScanBotDatabase;
@@ -34,14 +35,13 @@ public class RegistrationActivity extends AppCompatActivity {
     String name,mobile,email,password,cnfpassword;
 
     private ProgressDialog progressDialog;
+    TextView login;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
         initialize();
-
-
 
     }
 
@@ -56,6 +56,7 @@ public class RegistrationActivity extends AppCompatActivity {
         emailtv=findViewById(R.id.emailtv);
         passwordtv=findViewById(R.id.passwordtv);
         cnfpwdtv=findViewById(R.id.cnfpwdtv);
+        login=findViewById(R.id.login);
 
         btnsub=findViewById(R.id.btnsub);
 
@@ -106,6 +107,15 @@ public class RegistrationActivity extends AppCompatActivity {
 
                     new InsertTask(RegistrationActivity.this, register).execute();
                 }
+            }
+        });
+
+
+        login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i =new Intent(RegistrationActivity.this,LoginActivity.class);
+                startActivity(i);
             }
         });
 

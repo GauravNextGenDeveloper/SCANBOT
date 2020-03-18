@@ -98,6 +98,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
+            <CheckBox
+                android:id="@+id/olCheck"
+                android:text="Online Payment"
+                android:checked="false"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
 
             <com.example.scanbot.CustomFonts.MavenProButton
                 android:id="@+id/loginbtn"

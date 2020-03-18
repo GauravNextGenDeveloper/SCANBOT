@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.example.scanbot.Database.ScanBotDatabase;
 import com.example.scanbot.Database.model.Register;
@@ -30,6 +31,7 @@ public class LoginActivity extends AppCompatActivity {
     private ProgressDialog progressDialog;
     SharedPreferences.Editor editor;
     private String MY_PREFS_NAME = "SCANBOOT";
+    TextView register;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,6 +56,7 @@ public class LoginActivity extends AppCompatActivity {
         mobilenoTv=findViewById(R.id.mobilenoEt);
         PwdTv=findViewById(R.id.passwordEt);
         btnsub=findViewById(R.id.loginbtn);
+        register=findViewById(R.id.register);
 
         new RetrieveTask(this).execute();
 
@@ -90,6 +93,14 @@ public class LoginActivity extends AppCompatActivity {
                         }
                     }
                 }
+            }
+        });
+
+        register.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i =new Intent(LoginActivity.this,RegistrationActivity.class);
+                startActivity(i);
             }
         });
 
