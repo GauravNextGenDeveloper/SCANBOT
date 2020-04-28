@@ -46,6 +46,7 @@ public class ScannerActivity extends AppCompatActivity {
             }
         });
 
+
     }
 
     private void call(String text) {

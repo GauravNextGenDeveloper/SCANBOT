@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.os.Handler;
 
 import com.example.scanbot.Activity.DashBordActivity;
+import com.example.scanbot.Activity.LoginActivity;
 import com.example.scanbot.Activity.RegistrationActivity;
 
 public class MainActivity extends AppCompatActivity {
@@ -41,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
 
                 }else
                 {
-                    Intent i = new Intent(MainActivity.this, RegistrationActivity.class);
+                    Intent i = new Intent(MainActivity.this, LoginActivity.class);
 
                     startActivity(i);
 

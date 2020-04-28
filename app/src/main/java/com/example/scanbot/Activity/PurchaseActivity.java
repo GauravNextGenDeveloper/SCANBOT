@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.Toast;
 
 import com.example.scanbot.Database.ScanBotDatabase;
 import com.example.scanbot.Database.model.BuyOne;
@@ -26,15 +27,13 @@ import java.util.List;
 public class PurchaseActivity extends AppCompatActivity {
 
     TextInputEditText totalEt,addressTv;
-    Button loginbtn;
-    CheckBox casCheck,olCheck;
+    Button casbtn,olbtn;
     private String MY_PREFS_NAME = "SCANBOOT";
     long userid=0;
     double total=0;
     private ScanBotDatabase scanBotDatabase;
     private List<Cart> cartListarray;
     private ProgressDialog progressDialog;
-    boolean cash=true,online=false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,10 +58,8 @@ public class PurchaseActivity extends AppCompatActivity {
 
         totalEt = findViewById(R.id.totalEt);
         addressTv = findViewById(R.id.addressTv);
-        loginbtn = findViewById(R.id.loginbtn);
-        casCheck = findViewById(R.id.casCheck);
-        olCheck = findViewById(R.id.olCheck);
-
+        olbtn = findViewById(R.id.olbtn);
+        casbtn = findViewById(R.id.casbtn);
         userid=getIntent().getLongExtra("userid",0);
         total=getIntent().getDoubleExtra("totalfare",0);
 
@@ -71,45 +68,26 @@ public class PurchaseActivity extends AppCompatActivity {
         addressTv.setText(address);
         totalEt.setText(total+"");
 
-        loginbtn.setOnClickListener(new View.OnClickListener() {
+        casbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               addToCart();
+                casbtn.setEnabled(false);
+                olbtn.setEnabled(false);
+               addToCart("cash");
+
             }
         });
 
-        casCheck.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        olbtn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked==true)
-                {
-                    cash =isChecked;
-                    olCheck.setChecked(false);
-
-                }else
-                {
-                    olCheck.setChecked(true);
-                    online=true;
-                }
-            }
-        });
-
-        olCheck.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked==true)
-                {
-                    online =isChecked;
-                    casCheck.setChecked(false);
-
-                }else
-                {
-                    casCheck.setChecked(true);
-                    cash=true;
-                }
+            public void onClick(View v) {
+                casbtn.setEnabled(false);
+                olbtn.setEnabled(false);
+               addToCart("online");
 
             }
         });
+
     }
 
     private class RetrieveTask extends AsyncTask<Void, Void, List<Cart>> {
@@ -165,7 +143,7 @@ public class PurchaseActivity extends AppCompatActivity {
     }
 
 
-    private void addToCart() {
+    private void addToCart(String type) {
 
         if (cartListarray.size()!=0)
         {
@@ -179,19 +157,24 @@ public class PurchaseActivity extends AppCompatActivity {
                 buyOne.setImage(cartListarray.get(i).getImage());
                 buyOne.setProduct_id(cartListarray.get(i).getProduct_id());
                 buyOne.setUser_id(userid);
-                new InsertTask(PurchaseActivity.this, buyOne).execute();
+                new InsertTask(PurchaseActivity.this, buyOne,type).execute();
 
             }
+        }else
+        {
+            Toast.makeText(this,"No item",Toast.LENGTH_SHORT).show();
         }
     }
 
     private class InsertTask extends AsyncTask<Void, Void, Boolean> {
 
         private BuyOne buyOne;
+        String type;
         private WeakReference<PurchaseActivity> activityReference;
         // only retain a weak reference to the activity
-        InsertTask(PurchaseActivity context, BuyOne buyOne) {
+        InsertTask(PurchaseActivity context, BuyOne buyOne,String type) {
             this.buyOne = buyOne;
+            this.type = type;
             activityReference = new WeakReference<>(context);
         }
 
@@ -218,10 +201,10 @@ public class PurchaseActivity extends AppCompatActivity {
             activityReference.get().scanBotDatabase.getCart().deleteCart();
             HideProgress();
             if (bool) {
-                if (cash==true)
+                if (type.equals("cash"))
                 {
                     finish();
-                }else if (online==true)
+                }else if (type.equals("online"))
                 {
                     Intent intent = new Intent(PurchaseActivity.this,WebviewActivity.class);
                     startActivity(intent);
